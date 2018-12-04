@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button *ngIf="!notInTopLevelGroup" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button *ngIf="notInTopLevelGroup" ion-button clear (click)="pagingBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>{{ currentPlace.name }} :: {{ 'scenes.title' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="getItems($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-grid>
+    <ion-row>
+        <!-- (click)="itemTapped($event, item)" -->
+      <ion-col *ngFor="let item of items" ion-long-press [interval]="400" (click)="goToggle(item)" (onPressing)="active(item)" col-6>
+        <ion-card>
+          <ion-thumbnail>
+            <img [src]="item.picture || 'assets/images/noimage.jpg'"/>
+            <section *ngIf="showButtons && itemID == item.id">
+              <div class="edit__button">
+                <button ion-button color="secondary" (click) = "editItem($event, item)">
+                  <ion-icon name="create"></ion-icon>
+                </button>
+              </div>
+              <div class="delete__button">
+                <button ion-button color="danger" (click) = "onDeleteItemClick($event, item)">
+                  <ion-icon name="trash"></ion-icon>
+                </button>
+              </div>
+            </section>
+          </ion-thumbnail>
+          <ion-card-header>
+            {{item.name}}
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

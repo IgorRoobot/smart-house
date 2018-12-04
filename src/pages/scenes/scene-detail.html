@@ -1,0 +1,64 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ currentPlace.name }} :: {{ 'rooms.title' | translate }} :: {{ currentScene.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <img [src]="currentScene.picture || 'assets/images/noimage.jpg'"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{currentScene.name}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  <ion-list-header>{{ 'groups.title' | translate }}</ion-list-header>
+  <ion-item>
+      <ion-badge color="primary" item-right>{{ requestedBrightness() }}</ion-badge>
+      <ion-badge color="secondary" item-right>{{ currentBrightness() }}</ion-badge>
+      <ion-range min="0" max="255" step="2" [(ngModel)]="brightness" (ionChange)="setBrightness()">
+        <ion-icon small range-left name="sunny"></ion-icon>
+        <ion-icon range-right name="sunny"></ion-icon>
+      </ion-range>
+    </ion-item>
+    <button ion-button color="secondary" outline (click)="goOn()">ON</button>
+    <button ion-button color="danger" outline (click)="goOff()">OFF</button>
+    
+  <all-groups-page></all-groups-page>
+
+  <!-- Large list performance boost: VirtualScroll -->
+  <ion-list-header>{{ 'devices.title' | translate }}</ion-list-header>
+  <ion-list *ngIf="devices.length" [virtualScroll]="devices" [approxItemHeight]="'40px'">
+    <ion-item-sliding *virtualItem="let item">
+      <ion-item (click)="itemTapped($event, item)">
+        <ion-avatar item-start>
+          <img [src]="'assets/images/devices/' + item.dtype + '.png' "/>
+        </ion-avatar>
+        <h2>{{item.title}}
+          <ion-badge *ngIf="isDeviceOnline(item)" color="secondary" item-end>{{ 'devices.status.online' | translate}}</ion-badge>
+          <ion-badge *ngIf="!isDeviceOnline(item)" color="primary" item-end>{{ 'devices.status.offline' | translate}}</ion-badge>
+        </h2>
+        <p>{{getRoomName(item.roomId)}}</p>
+        <ion-badge *ngIf="deviceState(item)" color="secondary" item-end>ON</ion-badge>
+        <ion-badge *ngIf="!deviceState(item)" color="danger" item-end>OFF</ion-badge>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click) = "onDeleteItemClick($event, item)">
+          <ion-icon name="trash"></ion-icon>
+          <span>{{ 'devices.btn.delete' | translate}}</span>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click) = "editItem($event, item)">
+          <ion-icon name="create"></ion-icon>
+          <span>{{ 'devices.btn.edit' | translate}}</span>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

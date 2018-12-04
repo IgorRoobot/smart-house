@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ 'SIGNUP' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <img src="assets/images/logo.png" class="logo"/>
+  </ion-card>
+  <form [formGroup]="form" (ngSubmit)="signup()">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label floating>{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" formControlName="email" email></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{ 'PASSWORDCONFIRM' | translate }}</ion-label>
+        <ion-input type="password" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button block ion-button>{{ 'CREATE_ACCOUNT_BUTTON' | translate }}</button>
+  </form>
+
+  <button clear block ion-button (click)="goToLogin()">{{ 'ACCOUNT_EXIST_BUTTON' | translate }}</button>
+</ion-content>

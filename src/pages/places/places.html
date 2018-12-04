@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'places.title' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="getItems($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom left>
+    <button ion-fab icon-only (click)="scanQrCode($event)">
+      <ion-icon name="qr-scanner"></ion-icon>
+    </button>
+  </ion-fab>
+  
+
+  <!-- Large list performance boost: VirtualScroll -->
+  <ion-list [virtualScroll]="items" [approxItemHeight]="'40px'">
+    <ion-item-sliding *virtualItem="let item">
+      <ion-item (click)="itemTapped($event, item)">
+        <ion-thumbnail item-start>
+          <img [src]="item.picture || 'assets/images/noimage.jpg'"/>
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <h3>{{item.desc}}</h3>
+        <ion-icon name="star" color="primary" *ngIf="currentPlace && item.id === currentPlace.id"></ion-icon>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click) = "onDeleteItemClick($event, item)">
+          <ion-icon name="trash"></ion-icon>
+          <span>{{ 'places.btn.delete' | translate}}</span>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <!-- <button ion-button color="primary" (click) = "makeCurrent($event, item)">
+          <ion-icon name="star"></ion-icon>
+          <span>{{ 'places.btn.make_fav' | translate}}</span>
+        </button> -->
+        <button ion-button color="primary" (click) = "shareKey($event, item)">
+          <ion-icon name="key"></ion-icon>
+          <span>{{ 'places.btn.share_key' | translate}}</span>
+        </button>
+        <button ion-button color="secondary" (click) = "editItem($event, item)">
+          <ion-icon name="create"></ion-icon>
+          <span>{{ 'places.btn.edit' | translate}}</span>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

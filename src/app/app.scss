@@ -1,0 +1,69 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.menuicon {
+  padding-right:10px;
+}
+
+#menutoolbar {
+  padding: 10px;
+  background-image: url(../assets/images/menuback.jpg);
+  background-size: 120%;
+  background-position: 0%;
+}
+
+#logosidemenu {
+  padding: 10px;
+  width:100px;
+}
+
+.menutitle {
+  clear:both;
+  float:left;
+  width:100px;
+  text-align:center;
+}
+
+.menulogo {
+  float: left;
+}
+
+.menulogout {
+  float: right;
+}
+
+.mainMenuEntry {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefeff+0,f7f7f7+95,eaeaea+100 */
+  background: rgb(254,254,255); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(254,254,255,1) 0%, rgba(247,247,247,1) 95%, rgba(234,234,234,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(254,254,255,1) 0%,rgba(247,247,247,1) 95%,rgba(234,234,234,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(254,254,255,1) 0%,rgba(247,247,247,1) 95%,rgba(234,234,234,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefeff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+}
+
+.toolbar-background {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#14b4ff+0,387ef5+30,0a73ac+100 */
+  background: #14b4ff; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #14b4ff 0%, #387ef5 30%, #0a73ac 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #14b4ff 0%,#387ef5 30%,#0a73ac 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #14b4ff 0%,#387ef5 30%,#0a73ac 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14b4ff', endColorstr='#0a73ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.toolbar-title {
+  color: #fff;
+}

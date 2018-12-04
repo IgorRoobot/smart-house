@@ -1,0 +1,18 @@
+page-entry-edit {
+
+}
+ion-content .showDevices {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    ion-badge {
+        height: 100%;
+        cursor: pointer;
+    }
+}
+
+ion-card-title {
+    img {
+        height: 40px;
+    }
+}

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!-- <ion-title>{{ 'ROOMS_TITLE' | translate }}</ion-title> -->
+    <ion-title>{{ currentPlace.name }} :: {{ 'rooms.title' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="getItems($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <!-- Large list performance boost: VirtualScroll -->
+  <ion-list [virtualScroll]="items" [approxItemHeight]="'40px'">
+    <ion-item-sliding *virtualItem="let item">
+      <ion-item (click)="itemTapped($event, item)">
+        <ion-thumbnail item-start>
+          <img [src]="item.picture || 'assets/images/noimage.jpg'"/>
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <h3>{{item.desc}}</h3>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click) = "onDeleteItemClick($event, item)">
+          <ion-icon name="trash"></ion-icon>
+          <span>{{ 'rooms.btn.delete' | translate}}</span>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click) = "editItem($event, item)">
+          <ion-icon name="create"></ion-icon>
+          <span>{{ 'rooms.btn.edit' | translate}}</span>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

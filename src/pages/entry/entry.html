@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'ENTRY_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="getEntrys($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only (click)="showAddDialog()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+    <button (click)="publishMsg()">msg</button>
+    <h1>message:{{myMessage}}</h1>
+    <!-- <h1>myOtherMessage: {{(myOtherMessage$ | async)?.payload.toString()}}</h1> -->
+    
+  <!-- Large list performance boost: VirtualScroll -->
+  <ion-list [virtualScroll]="entrys">
+    <ion-item *virtualItem="let entry" (click)="itemTapped($event, entry)">
+      <ion-avatar item-left>
+        <ion-img [src]="entry.imgbase64"></ion-img>
+      </ion-avatar>
+      <h2>{{entry.objectId}}</h2>
+      <h3>{{entry.Description}}</h3>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

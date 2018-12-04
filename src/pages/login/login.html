@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="getstart">
+  <ion-card>
+    <img src="assets/images/logo.png" class="logo"/>
+    <h1 color="light">{{ 'MENU_TITLE' | translate }}</h1>
+  </ion-card>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button block ion-button (click)="login()">{{ 'LOGIN' | translate }}</button>
+  <button clear block ion-button (click)="goToSignUp()" color="light">{{ 'NO_ACCOUNT_BUTTON' | translate }}</button>
+</ion-content>

@@ -1,0 +1,24 @@
+page-places {
+
+}
+ion-navbar>.toolbar-content {
+    display: flex;
+}
+ion-thumbnail {
+    position: relative;
+    .edit__button, .delete__button {
+        position: absolute;
+        top: 5%;    
+        button {
+            border-radius: 50%;
+        }
+    }
+    
+    .edit__button {
+        left: 2%;
+    }
+    
+    .delete__button {
+        right: 2%;
+    }
+}

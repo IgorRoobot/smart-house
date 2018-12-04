@@ -1,0 +1,24 @@
+<!-- Large list performance boost: VirtualScroll -->
+<ion-list>
+  <ion-item-sliding *ngFor="let item of items">
+    <ion-item (click)="itemTapped($event, item)">
+      <ion-thumbnail item-start>
+        <img [src]="item.picture || 'assets/images/noimage.jpg'"/>
+      </ion-thumbnail>
+      <h2>{{item.name}}</h2>
+      <h3>{{item.desc}}</h3>
+    </ion-item>
+    <ion-item-options side="left">
+      <button ion-button color="danger" (click) = "onDeleteItemClick($event, item)">
+        <ion-icon name="trash"></ion-icon>
+        <span>{{ 'groups.btn.delete' | translate}}</span>
+      </button>
+    </ion-item-options>
+    <ion-item-options side="right">
+      <button ion-button color="secondary" (click) = "editItem($event, item)">
+        <ion-icon name="create"></ion-icon>
+        <span>{{ 'groups.btn.edit' | translate}}</span>
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>

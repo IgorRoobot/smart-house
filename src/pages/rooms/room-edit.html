@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ currentPlace.name }} :: {{ 'rooms.title' | translate }} :: {{ currentRoom.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card (click)="changePicture()">
+    <img [src]="currentRoom.picture || 'assets/images/noimage.jpg'"/>
+  </ion-card>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label floating>{{ 'rooms.fields.edit_name' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="currentRoom.name"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button block ion-button (click)="itemSave()">{{ 'rooms.btn.save' | translate }}</button>
+
+</ion-content>

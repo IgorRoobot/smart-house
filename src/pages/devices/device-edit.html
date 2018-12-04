@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ currentPlace.name }} :: {{ 'devices.title' | translate }} :: {{ currentDevice.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card (click)="changePicture()">
+    <img [src]="'assets/images/devices/' + currentDevice.dtype + '.png' "/>
+  </ion-card>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label floating>{{ 'devices.fields.edit_name' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="currentDevice.title"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="selectedRoomId">
+    <ion-list-header>{{ 'devices.fields.select_room' | translate }}</ion-list-header>
+    <ion-item *ngFor="let room of rooms;">
+      <ion-label>{{room.name}}</ion-label>
+      <ion-radio [checked]="isRoomChecked(room.id)" value="{{room.id}}"></ion-radio>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <ion-list-header>{{ 'groups.fields.select_group' | translate }}</ion-list-header>
+    <ion-item *ngFor="let group of groups;let i=index;">
+      <ion-checkbox [(ngModel)]="group.isChecked" (ionChange)="updateItem(group)"></ion-checkbox>
+      <ion-label>{{group.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+  <button block ion-button (click)="itemSave()">{{ 'devices.btn.save' | translate }}</button>
+
+</ion-content>

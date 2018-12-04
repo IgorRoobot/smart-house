@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ currentPlace.name }} :: {{ 'groups.btn.add_devices' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list [virtualScroll]="items" [approxItemHeight]="'40px'">
+    <ion-item-sliding *virtualItem="let item">
+        <ion-item>
+          <ion-checkbox (ionChange)="updateItem(item.id)"></ion-checkbox>
+          <ion-label id="labelAdd">
+            <ion-avatar item-start>
+              <img [src]="'assets/images/devices/' + item.dtype + '.png' "/>
+            </ion-avatar>
+            <div>
+              <h2><p>{{item.title}}</p>
+                <ion-badge *ngIf="isDeviceOnline(item)" color="secondary" item-end>{{ 'devices.status.online' | translate}}</ion-badge>
+                <ion-badge *ngIf="!isDeviceOnline(item)" color="primary" item-end>{{ 'devices.status.offline' | translate}}</ion-badge>
+              </h2>
+              <p>{{getRoomName( (!!item.roomId) ? item.roomId : undefined )}}</p>
+            </div>
+            <div id="badges">
+              <ion-badge  color="secondary">{{deviceState(item)}}</ion-badge>
+              <ion-badge *ngIf="deviceState(item)" color="secondary" item-end>ON</ion-badge>
+              <ion-badge *ngIf="!deviceState(item)" color="danger" item-end>OFF</ion-badge>
+            </div>
+          </ion-label>
+        </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <button block ion-button [disabled]="buttonStatus" (click)="itemSave()">{{ 'scenes.btn.save' | translate }}</button>
+
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'ENTRY_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card (click)="changePicture()">
+    <img src="{{selectedItem.imgbase64}}" class="logo"/>
+  </ion-card>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label floating>{{ 'EDIT_ENTRY_NAME' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="selectedItem.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>{{ 'EDIT_ENTRY_DESC' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="selectedItem.desc"></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+  <button block ion-button (click)="entrysave()">{{ 'EDIT_ENTRY_SAVE' | translate }}</button>
+
+</ion-content>

@@ -1,0 +1,222 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'DEVICES_CREATE__ADD_NEW_DEVICE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-slides>
+  <!-- FIRST slide start -->
+    <ion-slide>
+<!--       <ion-header no-border text-center>
+          <ion-toolbar transparent>
+          </ion-toolbar>
+      </ion-header> -->
+      <!-- content -->
+      <h1>{{ 'DEVICES_CREATE__ADD_NEW_DEVICE' | translate }}</h1>
+      <!-- <ion-content padding style="position: static;"> -->
+          <h2>{{ 'DEVICES_CREATE__PROVIDE_CREDENTIALS' | translate }}</h2>
+          <p>{{ 'DEVICES_CREATE__CREDENTIALS_WILL_NOT_BE_USED' | translate }}</p>
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__SSID' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.ssid"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__SSID_PASS' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.password"></ion-input>
+          </ion-item>
+            <ion-item>
+              <ion-label stacked>{{ 'DEVICES_CREATE__SAVE_CREDS_IN_APP' | translate }}</ion-label>
+              <ion-checkbox [(ngModel)]="deviceCreateData.doSaveSSID"></ion-checkbox>
+            </ion-item>
+        </ion-list>
+        <button ion-button large clear icon-end color="primary" (click)="slideNext()" [disabled]="!isSlideNextEnabled()">
+          {{ 'DEVICES_BTN_SLIDE_NEXT' | translate }}
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      <!-- </ion-content> -->
+
+      <!-- ./content -->
+<!--       <ion-footer no-border text-center>
+          <ion-toolbar transparent>
+              <ion-buttons left>
+              </ion-buttons>
+              <ion-buttons right>
+                <button ion-button large clear icon-end color="primary" (click)="slideNext()" [disabled]="!isSlideNextEnabled()">
+                  {{ 'devices.btn.nextSlide' | translate }}
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </ion-buttons>
+          </ion-toolbar>
+      </ion-footer> -->
+    </ion-slide>
+  <!-- slide end -->
+  <!-- slide start -->
+    <ion-slide>  
+<!--       <ion-header no-border text-center>
+          <ion-toolbar transparent>
+          </ion-toolbar>
+      </ion-header> -->
+      <!-- content -->
+      <h1>{{ 'DEVICES_CREATE__CONNECT_TO_DEVICE_AP1' | translate }}</h1>
+      <!-- <ion-content padding style="position: static;"> -->
+          <h2>{{ 'DEVICES_CREATE__CONNECT_TO_DEVICE_AP2' | translate }}</h2>
+          <p>{{ 'DEVICES_CREATE__CONNECT_TO_DEVICE_WIFI' | translate }}</p>
+          <p>{{ 'DEVICES_CREATE__CONNECT_TO_DEVICE_GET_BACK_TO_APP' | translate }}</p>
+<!--               <ion-buttons left>
+                <button ion-button large clear icon-start color="primary" (click)="slidePrev()">
+                  <ion-icon name="arrow-back"></ion-icon>
+                  {{ 'devices.btn.prevSlide' | translate }}
+                </button>
+              </ion-buttons> -->
+              <!-- <ion-buttons right> -->
+                <button ion-button large clear icon-end color="primary" (click)="getDeviceAndSlideNext()">
+                  {{ 'DEVICES_BTN_SLIDE_NEXT' | translate }}
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              <!-- </ion-buttons>  -->         
+      <!-- </ion-content> -->
+
+      <!-- ./content -->
+<!--       <ion-footer no-border text-center>
+          <ion-toolbar transparent>
+              <ion-buttons left>
+                <button ion-button large clear icon-start color="primary" (click)="slidePrev()">
+                  <ion-icon name="arrow-back"></ion-icon>
+                  {{ 'devices.btn.prevSlide' | translate }}
+                </button>
+              </ion-buttons>
+              <ion-buttons right>
+                <button ion-button large clear icon-end color="primary" (click)="getDeviceAndSlideNext()">
+                  {{ 'devices.btn.nextSlide' | translate }}
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </ion-buttons>
+          </ion-toolbar>
+      </ion-footer> -->
+    </ion-slide>
+  <!-- slide end -->
+  <!-- slide start -->
+    <ion-slide>
+<!--       <ion-header no-border text-center>
+          <ion-toolbar transparent>
+          </ion-toolbar>
+      </ion-header> -->
+      <!-- content -->
+      <ion-content padding style="position: static;">
+          <h1>{{ 'DEVICES_CREATE__FOUND_DEVICES' | translate }}</h1>
+          <h2>{{ 'DEVICES_CREATE__FOLLOWING_DEVICES_COULD_BE_CREATED' | translate }}</h2>
+          <ion-list>
+              <div *ngFor="let item of deviceCreateData.deviceCapabilies">
+                <ion-item>
+                  <ion-avatar item-start>
+                    <img [src]="'assets/images/devices/' + item.cname + '.png' "/>
+                  </ion-avatar>
+                  <p item-end>{{item.cname}}{{ 'DEVICES_CREATE__MAX_NUM' | translate }}
+                  <ion-badge color="primary" item-end>{{item.qty}}</ion-badge></p>
+                </ion-item>
+                <ion-item>
+                  <ion-label inline>{{ 'DEVICES_CREATE__USER_NUM' | translate }}</ion-label>
+                  <ion-input type="number" [(ngModel)]="item.userQty" (change)="userChangeNumber(item)"></ion-input>
+                </ion-item>
+              </div>
+          </ion-list>
+
+        <p>{{ 'DEVICES_CREATE__sl3_text1' | translate }}</p>
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__brokerURL' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.brokerURL"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__brokerPort' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.brokerPort"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__brokerUser' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.brokerUser"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__brokerPwd' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.brokerPwd"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__topicBase' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.topicBase"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__deviceType' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.deviceType"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__devicePlace' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.devicePlace"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>{{ 'DEVICES_CREATE__updateURL' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="deviceCreateData.updateURL"></ion-input>
+          </ion-item>
+        </ion-list>
+<!--               <ion-buttons left>
+                <button ion-button large clear icon-start color="primary" (click)="slidePrev()">
+                  <ion-icon name="arrow-back"></ion-icon>
+                  {{ 'devices.btn.prevSlide' | translate }}
+                </button>
+              </ion-buttons> -->
+              <!-- <ion-buttons right> -->
+                <button ion-button large clear icon-end color="primary" (click)="saveToDeviceAndSlideNext()">
+                  {{ 'DEVICES_BTN_SLIDE_NEXT' | translate }}
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              <!-- </ion-buttons>    -->
+      </ion-content>
+
+      <!-- ./content -->
+<!--       <ion-footer no-border text-center>
+          <ion-toolbar transparent>
+              <ion-buttons left>
+                <button ion-button large clear icon-start color="primary" (click)="slidePrev()">
+                  <ion-icon name="arrow-back"></ion-icon>
+                  {{ 'devices.btn.prevSlide' | translate }}
+                </button>
+              </ion-buttons>
+              <ion-buttons right>
+                <button ion-button large clear icon-end color="primary" (click)="saveDeviceAndSlideNext()">
+                  {{ 'devices.btn.nextSlide' | translate }}
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </ion-buttons>
+          </ion-toolbar>
+      </ion-footer> -->     
+    </ion-slide>
+  <!-- slide start -->
+    <ion-slide>  
+      <h1>{{ 'DEVICES_CREATE__RETURN_BACK_TO_WIFI_HEADER1' | translate }}</h1>
+      <h2>{{ 'DEVICES_CREATE__RETURN_BACK_TO_WIFI_HEADER2' | translate }}</h2>
+      <p>{{ 'DEVICES_CREATE__RETURN_BACK_TO_WIFI_TEXT1' | translate }}</p>
+      <button ion-button large clear icon-end color="primary" (click)="saveDevicesAndSlideNext()">
+        {{ 'DEVICES_BTN_SLIDE_NEXT' | translate }}
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  <!-- slide end -->
+  <!-- slide start -->
+    <ion-slide>  
+      <h1>{{ 'DEVICES_CREATE__DEVICE_CREATED' | translate }}</h1>
+      <h2>{{ 'DEVICES_CREATE__THANKS' | translate }}</h2>
+      <p>{{ 'DEVICES_CREATE__ADD_ANOTHER_DEVICE' | translate }}</p>
+      <button ion-button large clear icon-end color="primary" (click)="startOver()">
+        {{ 'DEVICES_BTN_SLIDE_NEXT' | translate }}
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>    
+    </ion-slide>
+  <!-- slide end -->
+
+  </ion-slides>
+
+</ion-content>

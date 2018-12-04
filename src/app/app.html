@@ -1,0 +1,29 @@
+<ion-menu [content]="content">
+  <ion-header id="menutoolbar">
+
+      <div class="menulogo">
+        <img src="assets/images/logo.png" id="logosidemenu" class="avatar motion spin fade">
+      </div>
+      <div class="menulogout">
+        <button menuClose ion-button (click)="logout()">
+          <i>{{ 'MENU_LOGOUT' | translate }}</i> <ion-icon name="md-log-out" style="font-size:25px;padding-left:5px;"></ion-icon>
+        </button>
+      </div>
+      <p class="menutitle">
+        <ion-title>{{ 'MENU_TITLE' | translate }}</ion-title>
+      </p>
+
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="mainMenuEntry">
+        <ion-icon name="{{p.icon}}" class="menuicon"></ion-icon>{{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

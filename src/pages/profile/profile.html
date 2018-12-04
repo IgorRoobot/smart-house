@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'PROFILE_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card (click)="changePicture()">
+    <img src="{{user.imgbase64}}" class="logo"/>
+  </ion-card>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label floating>{{ 'NAME' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>{{ 'PASSWORDCONFIRM' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button block ion-button (click)="saveprofile()">{{ 'PROFILE_SAVE_BUTTON' | translate }}</button>
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ currentPlace.name }} :: {{ 'rooms.title' | translate }} :: {{ currentDevice.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<!--   <ion-fab bottom left>
+    <button ion-fab icon-only color="secondary" (click)="editItem()">
+      <ion-icon name="create"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only color="danger" (click)="deleteItem()">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+  </ion-fab> -->
+
+
+  <ion-card>
+    <img [src]="'assets/images/devices/' + currentDevice.dtype + '.png' "/>
+    <ion-card-content>
+      <dynamic-component [componentData]="componentData"></dynamic-component>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

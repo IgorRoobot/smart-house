@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'places.title' | translate }} : {{ 'share.title' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngIf="scannedCode">
+    <ion-thumbnail item-start>
+      <img [src]="scannedCode.picture || 'assets/images/noimage.jpg'"/>
+    </ion-thumbnail>
+    <h2>Name: {{scannedCode.name}}</h2>
+    <h2>Place ID: {{scannedCode.id}}</h2>
+  </ion-item>
+
+  <button ion-button full icon-left (click)="scanCode()"><ion-icon name="qr-scanner"></ion-icon>Scan Code</button>
+
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      Result from Scan: {{ scannedCode }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

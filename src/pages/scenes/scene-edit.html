@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ currentPlace.name }} :: {{ 'groups.title' | translate }} :: {{ currentScene.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card (click)="changePicture()">
+    <img [src]="currentScene.picture || 'assets/images/noimage.jpg'"/>
+  </ion-card>
+  
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label floating>{{ 'groups.fields.edit_name' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="currentScene.name"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="!inEditMode" class="showDevices"><p>{{'scenes.title' | translate}}</p><ion-badge (click)="toggleDevices()" color="danger" item-end>{{ 'scenes.fields.add_devices_and_groups' | translate}}</ion-badge></div>
+  <div *ngIf="inEditMode" class="showDevices"><p>{{'scenes.title' | translate}}</p><ion-badge (click)="toggleDevices()" color="secondary" item-end>{{ 'scenes.fields.hide_devices_and_groups' | translate}}</ion-badge></div>
+  <ion-list *ngIf="!isEdit || inEditMode">
+    <ion-list-header>{{ 'groups.fields.select_group' | translate }}</ion-list-header>
+    <section *ngIf="isEdit">
+      <ion-item *ngFor="let group of groupsInEditMode">
+        <ion-checkbox [(ngModel)]="group.isChecked" (ionChange)="updateItemGroups(group)"></ion-checkbox>
+        <ion-label>{{group.name}}</ion-label>
+      </ion-item>
+    </section>
+    <section *ngIf="!isEdit">
+      <ion-item *ngFor="let group of groups">
+        <ion-checkbox [(ngModel)]="group.isChecked" (ionChange)="updateItemGroups(group)"></ion-checkbox>
+        <ion-label>{{group.name}}</ion-label>
+      </ion-item>
+    </section>
+  </ion-list>
+
+  <ion-list *ngIf="!isEdit || inEditMode">
+    <ion-list-header>{{ 'scenes.fields.devices.select_devices' | translate }}</ion-list-header>
+    <section *ngIf="isEdit">
+      <ion-item *ngFor="let device of devicesInEditMode">
+        <ion-checkbox [(ngModel)]="device.isChecked" (ionChange)="updateItemDevices(device)"></ion-checkbox>
+        <ion-label>{{device.title}}</ion-label>
+      </ion-item>
+    </section>
+    <section *ngIf="!isEdit">
+      <ion-item *ngFor="let device of devices">
+        <ion-checkbox [(ngModel)]="device.isChecked" (ionChange)="updateItemDevices(device)"></ion-checkbox>
+        <ion-label>{{device.title}}</ion-label>
+      </ion-item>
+    </section>
+  </ion-list>
+
+  <ion-list *ngIf="isEdit">
+    <ion-list-header>{{ 'groups.title' | translate }}</ion-list-header>
+    <ion-item-sliding *ngFor="let item of sceneGroupIsEdit">
+        <ion-item (click)="itemTapped($event, item)">
+          <ion-thumbnail item-start>
+            <img [src]="item.picture || 'assets/images/noimage.jpg'"/>
+          </ion-thumbnail>
+          <h2>{{item.name}}</h2>
+          <h3>{{item.desc}}</h3>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="danger" (click) = "onDeleteGroupClick($event, item)">
+            <ion-icon name="trash"></ion-icon>
+            <span>{{ 'groups.btn.delete' | translate}}</span>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    <ion-list-header>{{ 'devices.title' | translate }}</ion-list-header>
+    <ion-item-sliding *ngFor="let item of sceneDeviceIsEdit">
+      <ion-item>
+        <ion-avatar item-start>
+          <img [src]="'assets/images/devices/' + item.dtype + '.png' "/>
+        </ion-avatar>
+        <h2>{{item.title}}
+          <ion-badge *ngIf="isDeviceOnline(item)" color="secondary" item-end>{{ 'devices.status.online' | translate}}</ion-badge>
+          <ion-badge *ngIf="!isDeviceOnline(item)" color="primary" item-end>{{ 'devices.status.offline' | translate}}</ion-badge>
+        </h2>
+        <p>{{getRoomName(item.roomId)}}</p>
+        <ion-badge *ngIf="deviceState(item)" color="secondary" item-end>ON</ion-badge>
+        <ion-badge *ngIf="!deviceState(item)" color="danger" item-end>OFF</ion-badge>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click) = "onDeleteDeviceClick($event, item)">
+          <ion-icon name="trash"></ion-icon>
+          <span>{{ 'devices.btn.delete' | translate}}</span>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <button block ion-button (click)="itemSave()">{{ 'groups.btn.save' | translate }}</button>
+
+</ion-content>

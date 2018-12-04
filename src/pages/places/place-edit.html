@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'places.title' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card (click)="changePicture()">
+    <img [src]="selectedItem.picture || 'assets/images/noimage.jpg'"/>
+  </ion-card>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label floating>{{ 'places.fields.edit_name' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="selectedItem.name"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button block ion-button (click)="itemSave()">{{ 'places.btn.save' | translate }}</button>
+
+</ion-content>

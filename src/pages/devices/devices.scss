@@ -1,0 +1,19 @@
+page-devices {
+
+}
+ion-label {
+    margin: 10px 8px 2px 2px!important;
+    h2 {
+        display: flex;
+        flex-wrap: wrap;
+        ion-badge {
+            margin: 3px 4px 3px 10px!important;
+        }
+    }
+}
+    
+@media only screen and (max-width: 426px) {
+    ion-label {
+        margin: 8px 0 0 0!important;
+    }
+}

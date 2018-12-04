@@ -1,0 +1,22 @@
+    <h3>room {{room | json}}</h3>
+    <p>place {{place.objectId}} </p>
+    <p>items {{items.length}} </p>
+<!-- <ion-list inset>
+  <button ion-item *ngFor="let item of items" (click)="itemTapped(item)">
+    {{ item.title }}
+  </button> 
+</ion-list> -->
+
+<ion-list inset>
+  <ion-item ion-item *ngFor="let item of items" (click)="itemTapped(item)">
+        <ion-avatar item-start>
+          <img [src]="'assets/images/devices/' + item.dtype + '.png' "/>
+        </ion-avatar>
+        <h2>{{item.title}} 
+          <ion-badge *ngIf="isDeviceOnline(item)" color="secondary" item-end>{{ 'devices.status.online' | translate}} {{ uptime}}</ion-badge>
+          <ion-badge *ngIf="!isDeviceOnline(item)" color="primary" item-end>{{ 'devices.status.offline' | translate}}</ion-badge>
+        </h2>
+        <ion-badge *ngIf="isMsgForItem(item)" color="secondary" item-end>ON</ion-badge>
+        <ion-badge *ngIf="!isMsgForItem(item)" color="danger" item-end>OFF</ion-badge>
+  </ion-item> 
+</ion-list>

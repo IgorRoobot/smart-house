@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ currentPlace.name }} :: {{ 'groups.title' | translate }} :: {{ currentGroup.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card (click)="changePicture()">
+    <img [src]="currentGroup.picture || 'assets/images/noimage.jpg'"/>
+  </ion-card>
+  <ion-card-title>
+    {{ 'groups.fields.group' | translate }}: <img [src]="'assets/images/devices/' + currentGroup.type + '.png'"> {{ currentGroup.name }}
+  </ion-card-title>
+
+  <ion-item>
+    <ion-badge color="primary" item-right>{{ requestedBrightness() }}</ion-badge>
+    <ion-badge color="secondary" item-right>{{ currentBrightness() }}</ion-badge>
+    <ion-range min="0" max="255" step="2" [(ngModel)]="brightness" (ionChange)="setBrightness()">
+      <ion-icon small range-left name="sunny"></ion-icon>
+      <ion-icon range-right name="sunny"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <button ion-button color="secondary" outline (click)="goOn()">ON</button>
+  <button ion-button color="danger" outline (click)="goOff()">OFF</button>
+  <div *ngIf="!isOpen" class="showDevices"><p>{{'devices.title' | translate}}</p><ion-badge (click)="toggleDevices()" color="danger" item-end>{{ 'devices.fields.show_devices' | translate}}</ion-badge></div>
+  <div *ngIf="isOpen" class="showDevices"><p>{{'devices.title' | translate}}</p><ion-badge (click)="toggleDevices()" color="secondary" item-end>{{ 'devices.fields.hide_devices' | translate}}</ion-badge></div>
+  <ion-list *ngIf="isOpen" >
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item (click)="itemTapped($event, item)">
+        <ion-avatar item-start>
+          <img [src]="'assets/images/devices/' + item.dtype + '.png' "/>
+        </ion-avatar>
+        <h2>{{item.title}}
+          <ion-badge *ngIf="isDeviceOnline(item)" color="secondary" item-end>{{ 'devices.status.online' | translate }}</ion-badge>
+          <ion-badge *ngIf="!isDeviceOnline(item)" color="primary" item-end>{{ 'devices.status.offline' | translate }}</ion-badge>
+        </h2>
+        <p>{{ getRoomName( (!!item.roomId) ? item.roomId : undefined ) }}</p>
+        <ion-badge  color="secondary">{{ deviceState(item) }}</ion-badge>
+        <ion-badge *ngIf="deviceState(item)" color="secondary" item-end>ON</ion-badge>
+        <ion-badge *ngIf="!deviceState(item)" color="danger" item-end>OFF</ion-badge>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click) = "editItem($event, item)">
+          <ion-icon name="create"></ion-icon>
+          <span>{{ 'devices.btn.edit' | translate }}</span>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

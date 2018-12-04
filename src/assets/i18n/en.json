@@ -1,0 +1,241 @@
+{
+  "NAME": "Name",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "PASSWORDCONFIRM": "Confirm Password",
+  "NO_ACCOUNT_BUTTON": "No Account? Sign Up Here",
+  "EMAIL": "Email",
+  "LOGIN": "Sign in",
+  "SIGNUP": "Sign up",
+  "SETTINGS_TITLE": "Settings",
+  "PROFILE_TITLE": "Profile",
+  "ENTRY_TITLE": "Entrys",
+  "LOGIN_TITLE": "Sign in",
+  "LOGIN_ERROR": "Unable to sign in. Please check your account information and try again.",
+  "LOGIN_BUTTON": "Sign in",
+  "SIGNUP_TITLE": "Sign up",
+  "SIGNUP_ERROR": "Unable to create account. Please check your account information and try again.",
+  "SIGNUP_BUTTON": "Sign up",
+  "SIGNUP_PWCHECK_TITLE": "Error",
+  "SIGNUP_PWCHECK_MESSAGE": "Password do not match. Please retry.",
+  "SIGNUP_SUCCESS_TITLE": "Success",
+  "SIGNUP_SUCCESS_MESSAGE": "Congratulations. Account has been created. Please login.",
+  "CREATE_ACCOUNT_BUTTON": "Create Account",
+  "ACCOUNT_EXIST_BUTTON": "Already have an Account? Login Here",
+  "LOADING": "Loading",
+  "ERROR_TITLE": "Error",
+  "ERROR_TEXT": "An error occurred while processing your request",
+  "ADD_ENTRY_TITLE": "Add entry",
+  "ADD_ENTRY_MESSAGE": "Enter the information of the new entry",
+  "ADD_ENTRY_NAME": "Enter the name",
+  "ADD_ENTRY_DESC": "Enter the email",
+  "ADD_ENTRY_CANCEL": "Cancel",
+  "ADD_ENTRY_SAVE": "Save",
+  "ADD_ENTRY_SUCCESS_TITLE": "Success",
+  "ADD_ENTRY_SUCCESS_MESSAGE": "Entry saved successfully.",
+  "EDIT_ENTRY_TITLE": "Edit entry",
+  "EDIT_ENTRY_MESSAGE": "Edit the information of your entry",
+  "EDIT_ENTRY_NAME": "Name",
+  "EDIT_ENTRY_DESC": "Description",
+  "EDIT_ENTRY_CANCEL": "Cancel",
+  "EDIT_ENTRY_SAVE": "Save",
+  "EDIT_ENTRY_SUCCESS_TITLE": "Success",
+  "EDIT_ENTRY_SUCCESS_MESSAGE": "Entry information updated successfully.",
+  "DELETE_ENTRY_TITLE": "Delete entry",
+  "DELETE_ENTRY_MESSAGE": "Are you sure?",
+  "DELETE_ENTRY_NO": "No",
+  "DELETE_ENTRY_YES": "Yes",
+  "DELETE_ENTRY_SUCCESS_TITLE": "Success",
+  "DELETE_ENTRY_SUCCESS_TEXT": "Entry deleted successfully.",
+  "MENU_TITLE": "Cozy home",
+  "MENU_LOGOUT": "Logout",
+  "ADD_ENTRY_TAKEPICTURE": "Take photo",
+  "PROFILE_SAVE_BUTTON": "Save profile",
+  "PROFILE_SUCCESS_TITLE": "Success",
+  "PROFILE_SUCCESS_MESSAGE": "Profile saved successfully.",
+  "CHANGE_PIC_TITLE": "Change picture",
+  "CHANGE_PIC_MESSAGE": "Choose source",
+  "CHANGE_PIC_USE_CAM": "Camera",
+  "CHANGE_PIC_USE_BIB": "Gallery",
+
+  "tabs": {
+    "title": {
+      "rooms": "Rooms",
+      "devices": "Devices",
+      "scenes": "Scenes"
+    }
+  },
+
+  "places":{
+    "title": "Places",
+    "fields": {
+      "edit_name": "Place name"
+    },
+    "msg":{
+      "slide_to_see": "Slide right & left to expose buttons.Tap on item to see details"
+    },
+    "btn":{
+      "save": "save",
+      "edit": "edit",
+      "delete": "delete",
+      "share_key": "share"
+    }
+  },
+
+  "rooms":{
+    "title": "Rooms",
+    "msg":{
+      "not_attached_to_room": "<no room>"
+    },
+    "fields": {
+      "edit_name": "Room name"
+    },
+    "btn": {
+      "save": "save",
+      "edit":"edit",
+      "delete": "delete"
+    }
+  },
+
+  "groups":{
+    "title": "Groups",
+    "fields": {
+      "edit_name": "Group name",
+      "select_group": "Select group",
+      "group": "Group"
+    },
+    "btn": {
+      "save": "save",
+      "edit":"edit",
+      "delete": "delete",
+      "add_devices": "Add Devices"
+    }
+  },
+
+  "share":{
+    "title": "Share",
+    "btn": {
+      "generate_qr": "Generate QR-code",
+      "scan_qr": "Scan QR-code"
+    }
+  },
+
+  "scenes":{
+    "title": "Scenes",
+    "msg":{
+      "not_attached_to_room": "<no scene>"
+    },
+    "fields": {
+      "add_devices_and_groups": "Add devices and groups",
+      "hide_devices_and_groups": "Hide devices and groups",
+      "edit_name": "Scene name",
+      "devices": {
+        "select_devices": "Select devices"
+      }
+    },
+    "btn": {
+      "save": "save",
+      "edit":"edit",
+      "delete": "delete"
+    }
+  },
+
+  "DEVICES_BTN_SLIDE_NEXT": "Continue",
+
+  "DEVICES_CREATE__ADD_NEW_DEVICE": "Add new device",
+  "DEVICES_CREATE__PROVIDE_CREDENTIALS": "Please provide your Wi-Fi credentials.",
+  "DEVICES_CREATE__CREDENTIALS_WILL_NOT_BE_USED": "We will not use or save them to our database, they only needed to connect the device.",
+  "DEVICES_CREATE__SSID": "Your Wi-Fi name (SSID)",
+  "DEVICES_CREATE__SSID_PASS": "Your Wi-Fi password",
+  "DEVICES_CREATE__SAVE_CREDS_IN_APP": "Save the data in the phone memory?",
+
+  "DEVICES_CREATE__CONNECT_TO_DEVICE_AP1"  : "Connect to device's",
+  "DEVICES_CREATE__CONNECT_TO_DEVICE_AP2"  : " Access Point ",
+  "DEVICES_CREATE__CONNECT_TO_DEVICE_WIFI": "Please choose Wi-Fi, with name like '3PI_XXXXXXXXX'",
+  "DEVICES_CREATE__CONNECT_TO_DEVICE_GET_BACK_TO_APP": "Please get back to application after the connection and press continue.",
+
+  "DEVICES_CREATE__FOUND_DEVICES"  : "Devices found",
+  "DEVICES_CREATE__FOLLOWING_DEVICES_COULD_BE_CREATED"  : " Access Point ",
+  "DEVICES_CREATE__MAX_NUM": " - max number of devices ",
+  "DEVICES_CREATE__USER_NUM": "your quantity",
+  "DEVICES_CREATE__sl3_text1": "This page will be removed after debugging",
+
+  "DEVICES_CREATE__RETURN_BACK_TO_WIFI_HEADER1": "Please check that your device",
+  "DEVICES_CREATE__RETURN_BACK_TO_WIFI_HEADER2": "is back to Wi-Fi",
+  "DEVICES_CREATE__RETURN_BACK_TO_WIFI_TEXT1": "You just updated the device with Wi-Fi credentials, now check that your phone is connected back to Wi-Fi and press next.",
+
+  "DEVICES_CREATE__DEVICE_CREATED": "Device added",
+  "DEVICES_CREATE__THANKS": "Thank you",
+  "DEVICES_CREATE__ADD_ANOTHER_DEVICE": "Press continue to add another device or press back to exit this screen.",
+
+  "DEVICES_CREATE__LOADING_DEVICES": "Loading devices",
+  "DEVICES_CREATE__ERROR__NOT_CONNECTED_TO_DEVICE_TITLE": "Error locating device",
+  "DEVICES_CREATE__ERROR__NOT_CONNECTED_TO_DEVICE_TEXT": "An error occurred while searching for device, please check your connection.",
+
+  "DEVICES_CREATE__SAVING_DATA_TO_DEVICE": "Saving data to device",
+  "DEVICES_CREATE__ERROR__SAVING_DATA_TO_DEVICE_TITLE": "Error saving data to device",
+  "DEVICES_CREATE__ERROR__SAVING_DATA_TO_DEVICE_TEXT": "An error occurred while saving data to device, please check your connection.",
+
+  "DEVICES_CREATE__SAVING_DEVICES": "Saving devices",
+  "DEVICES_CREATE__ERROR__SAVING_DEVICES_TITLE": "Error saving devices",
+  "DEVICES_CREATE__ERROR__SAVING_DEVICES_TEXT": "An error occurred while saving devices, please check your connection.",
+
+
+  "devices":{
+    "title": "Devices",
+    "fields": {
+      "edit_name": "Device name",
+      "select_device": "Select Device",
+      "select_room": "Select room",
+      "show_devices": "Show Devices",
+      "hide_devices": "Hide Devices"
+    },
+    "btn": {
+      "save": "save",
+      "edit":"edit",
+      "delete": "delete",
+      "nextSlide": "Continue",
+      "prevSlide": "Previouse"
+    },
+    "types":{
+      "socket_on_off": "socket is ",
+      "led_on_off": "led is ",
+      "buzzer_on_off": "buzzer is ",
+      "window_blinds_up": "open",
+      "window_blinds_down": "close"
+    },
+    "status":{
+      "online": "online",
+      "offline": "offline"
+    },
+    "msg": {
+      "not_implemented_title": "Error!",
+      "not_implemented": "Not imlepemented yet"
+    },
+    "create": {
+
+    },
+    "create_new": "Create device"
+  },
+  "alerts": {
+    "error": {
+      "title": "Error",
+      "button": "OK"
+    }
+  },
+  "general": {
+    "loader_content": "LOADING",
+    "request_error": "An error occurred while processing your request",
+    "no_internet_error": "No internet connection",
+    "failed_to_update_list": "Failed to update list. No internet connection",
+    "username_taken": "Account already exists for this username.",
+    "email_taken": "Account already exists for this email address.",
+    "invalid_form": "The form is invalid"
+  },
+  "app": {
+    "initialization_error": "An error occurred while initializing application"
+  },
+  "login_page": {
+    "login_error": "Unable to sign in. Please check your account information and try again."
+  }
+}
